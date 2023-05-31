@@ -1263,7 +1263,7 @@ textarea {
     font: inherit
 }
 
-.btn,body,h1,h2,h3,h4,h5,h6 {
+.btn,.title,body,h1,h2,h3,h4,h5,h6 {
     font-weight: 400
 }
 
@@ -1352,16 +1352,16 @@ summary {
     width: 20px
 }
 
-.splide__sr,.visually-hidden {
+.checkbox__input,.splide__sr,.visually-hidden {
     width: 1px;
-    height: 1px;
-    margin: -1px
+    overflow: hidden
 }
 
 .splide__sr {
     clip: rect(0 0 0 0);
     border: 0;
-    overflow: hidden;
+    height: 1px;
+    margin: -1px;
     padding: 0;
     position: absolute
 }
@@ -1409,10 +1409,6 @@ summary {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none
-}
-
-.logo,.section-bg {
-    -webkit-user-select: none
 }
 
 .splide__track--fade>.splide__list>.splide__slide {
@@ -2739,10 +2735,6 @@ body {
     transition: background .4s ease
 }
 
-.theme-dark-element,.theme-light-element {
-    transition: opacity .4s ease,visibility .4s ease
-}
-
 body._mob-menu-active,body._popup-active {
     overflow: hidden
 }
@@ -2752,11 +2744,15 @@ section {
     z-index: 2
 }
 
-.section-bg {
+.main-footer-bg,.section-bg {
+    z-index: -1;
     position: absolute;
     left: 0;
-    top: 0;
-    z-index: -1;
+    top: 0
+}
+
+.section-bg {
+    -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
     pointer-events: none
@@ -2796,8 +2792,8 @@ section {
 }
 
 .theme-light-element,[data-theme=dark] .theme-dark-element {
-    opacity: 1;
-    visibility: visible
+    visibility: visible;
+    opacity: 1
 }
 
 [data-theme=dark] .categories__list li a {
@@ -2823,7 +2819,12 @@ section {
     background: rgba(255,255,255,.08)
 }
 
+.theme-light-element {
+    transition: opacity .4s ease,visibility .4s ease
+}
+
 .theme-dark-element {
+    transition: opacity .4s ease,visibility .4s ease;
     opacity: 0;
     visibility: hidden
 }
@@ -2833,6 +2834,7 @@ section {
     font-family: monospace,-webkit-pictograph;
     line-height: 1;
     min-width: 210px;
+    -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
     color: var(--theme-color);
@@ -2843,6 +2845,11 @@ section {
 .about__image,.main-footer-bg {
     -webkit-user-select: none;
     -ms-user-select: none
+}
+
+.logo span {
+    display: block;
+    white-space: nowrap
 }
 
 .wrapper {
@@ -2885,13 +2892,6 @@ section {
     transition: background .3s ease
 }
 
-.checkbox__input,.visually-hidden {
-    position: absolute;
-    white-space: nowrap;
-    -webkit-clip-path: inset(100%);
-    overflow: hidden
-}
-
 .btn:hover {
     background: var(--accent-hover)
 }
@@ -2917,8 +2917,13 @@ section {
 }
 
 .visually-hidden {
+    position: absolute;
+    height: 1px;
+    margin: -1px;
     padding: 0;
     border: 0;
+    white-space: nowrap;
+    -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
     clip: rect(0 0 0 0)
 }
@@ -2956,12 +2961,8 @@ section {
 }
 
 .main-footer-bg {
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
     user-select: none;
     pointer-events: none;
     display: flex;
@@ -3032,7 +3033,6 @@ section {
 
 .title {
     font-family: var(--title-font);
-    font-weight: 400;
     text-transform: uppercase;
     line-height: 80%;
     color: var(--theme-color)
@@ -3203,11 +3203,13 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .checkbox__input {
-    width: 1px;
+    position: absolute;
     height: 1px;
     margin: -1px;
     padding: 0;
     border: 0;
+    white-space: nowrap;
+    -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
     clip: rect(0 0 0 0)
 }
@@ -3274,10 +3276,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     flex: 1 1 auto
 }
 
-.header__logo--block {
-    margin-right: 10px
-}
-
 .header__logo--text {
     display: none
 }
@@ -3286,7 +3284,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: max(320px,100%);
     height: var(--height-screen,100vh);
     overflow-y: auto;
     overflow-x: hidden;
@@ -3811,6 +3809,10 @@ input:focus::placeholder,textarea:focus::placeholder {
 
     .checkbox__text {
         font-size: 1rem
+    }
+
+    .header__logo--block {
+        margin-right: 10px
     }
 
     .post-card._row {

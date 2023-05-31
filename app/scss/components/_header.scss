@@ -47,7 +47,9 @@
 		flex: 1 1 auto;
 
 		&--block {
-			margin-right: 10px;
+			@include _550 {
+				margin-right: 10px;
+			}
 		}
 
 		&--text {
@@ -84,7 +86,7 @@
 	&__nav {
 		position: absolute;
 		left: 0; top: 0;
-		width: 100%; 
+		width: max(320px, 100%); 
 		height: var(--height-screen, 100vh);
 		@supports (height: 1svh) {
 			height: 100svh;

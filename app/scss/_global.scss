@@ -171,6 +171,11 @@ section {
 		min-width: 310px;
 		font-size: 10px;
 	}
+
+	span {
+		display: block;
+		white-space: nowrap;
+	}
 	//letter-spacing: -0.0625rem;
 	user-select: none;
 	color: var(--theme-color);
