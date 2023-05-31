@@ -57,9 +57,11 @@
 		// .about__header--logo
 
 		&--logo {
-			font-size: 2.7vw;
+			font-size: 2.5vw;
+			min-width: 100%;
 			@media (min-width: 415px) {
 				font-size: 9.5px;
+				min-width: 210px;
 			}
 			@include _768 {
 				font-size: 1.3rem;

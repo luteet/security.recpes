@@ -1263,7 +1263,7 @@ textarea {
     font: inherit
 }
 
-.btn,.title,body,h1,h2,h3,h4,h5,h6 {
+.btn,body,h1,h2,h3,h4,h5,h6 {
     font-weight: 400
 }
 
@@ -1352,18 +1352,15 @@ summary {
     width: 20px
 }
 
-.checkbox__input,.splide__sr,.visually-hidden {
-    width: 1px;
-    overflow: hidden
-}
-
 .splide__sr {
     clip: rect(0 0 0 0);
     border: 0;
     height: 1px;
     margin: -1px;
+    overflow: hidden;
     padding: 0;
-    position: absolute
+    position: absolute;
+    width: 1px
 }
 
 .splide__toggle.is-active .splide__toggle__play,.splide__toggle__pause {
@@ -1409,6 +1406,10 @@ summary {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none
+}
+
+.logo,.section-bg {
+    -ms-user-select: none
 }
 
 .splide__track--fade>.splide__list>.splide__slide {
@@ -2735,6 +2736,10 @@ body {
     transition: background .4s ease
 }
 
+.theme-dark-element,.theme-light-element {
+    transition: opacity .4s ease,visibility .4s ease
+}
+
 body._mob-menu-active,body._popup-active {
     overflow: hidden
 }
@@ -2744,16 +2749,12 @@ section {
     z-index: 2
 }
 
-.main-footer-bg,.section-bg {
-    z-index: -1;
+.section-bg {
     position: absolute;
     left: 0;
-    top: 0
-}
-
-.section-bg {
+    top: 0;
+    z-index: -1;
     -webkit-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     pointer-events: none
 }
@@ -2792,8 +2793,8 @@ section {
 }
 
 .theme-light-element,[data-theme=dark] .theme-dark-element {
-    visibility: visible;
-    opacity: 1
+    opacity: 1;
+    visibility: visible
 }
 
 [data-theme=dark] .categories__list li a {
@@ -2819,12 +2820,7 @@ section {
     background: rgba(255,255,255,.08)
 }
 
-.theme-light-element {
-    transition: opacity .4s ease,visibility .4s ease
-}
-
 .theme-dark-element {
-    transition: opacity .4s ease,visibility .4s ease;
     opacity: 0;
     visibility: hidden
 }
@@ -2835,7 +2831,6 @@ section {
     line-height: 1;
     min-width: 210px;
     -webkit-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     color: var(--theme-color);
     -webkit-text-stroke-width: .5px;
@@ -2892,6 +2887,13 @@ section {
     transition: background .3s ease
 }
 
+.checkbox__input,.visually-hidden {
+    position: absolute;
+    white-space: nowrap;
+    -webkit-clip-path: inset(100%);
+    overflow: hidden
+}
+
 .btn:hover {
     background: var(--accent-hover)
 }
@@ -2912,18 +2914,12 @@ section {
     background: #9f46db
 }
 
-.checkbox__element,.header__nav,.header__nav--body::before,.input,.textarea {
-    background: var(--text-color-2)
-}
-
 .visually-hidden {
-    position: absolute;
+    width: 1px;
     height: 1px;
     margin: -1px;
     padding: 0;
     border: 0;
-    white-space: nowrap;
-    -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
     clip: rect(0 0 0 0)
 }
@@ -2961,8 +2957,12 @@ section {
 }
 
 .main-footer-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
     user-select: none;
     pointer-events: none;
     display: flex;
@@ -3033,6 +3033,7 @@ section {
 
 .title {
     font-family: var(--title-font);
+    font-weight: 400;
     text-transform: uppercase;
     line-height: 80%;
     color: var(--theme-color)
@@ -3077,16 +3078,12 @@ section {
     margin-bottom: -10px
 }
 
-.about__list,.checkbox__text {
-    line-height: 150%
-}
-
-.checkbox__text,.text._min {
-    font-size: .875rem
-}
-
 .text p:not(:first-child) {
     padding-top: 22px
+}
+
+.text._min {
+    font-size: .875rem
 }
 
 .text._min p:not(:first-child) {
@@ -3153,6 +3150,7 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .input,.textarea {
+    background: var(--text-color-2);
     border-radius: 5px;
     padding: 14px 17px;
     border: 1px solid var(--black);
@@ -3203,13 +3201,11 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .checkbox__input {
-    position: absolute;
+    width: 1px;
     height: 1px;
     margin: -1px;
     padding: 0;
     border: 0;
-    white-space: nowrap;
-    -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
     clip: rect(0 0 0 0)
 }
@@ -3223,6 +3219,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--text-color-2);
     border: 1px solid #000;
     border-radius: 5px;
     width: 28px;
@@ -3231,6 +3228,11 @@ input:focus::placeholder,textarea:focus::placeholder {
     margin-right: 12px;
     fill: transparent;
     transition: fill .2s ease
+}
+
+.checkbox__text {
+    font-size: .875rem;
+    line-height: 150%
 }
 
 .checkbox__text p:not(:first-child) {
@@ -3286,6 +3288,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     top: 0;
     width: max(320px,100%);
     height: var(--height-screen,100vh);
+    background: var(--text-color-2);
     overflow-y: auto;
     overflow-x: hidden;
     opacity: 0;
@@ -3315,6 +3318,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     top: 0;
     width: 100%;
     height: var(--height-header);
+    background: var(--text-color-2);
     z-index: 2
 }
 
@@ -3695,7 +3699,8 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .about__header--logo {
-    font-size: 2.7vw
+    font-size: 2.5vw;
+    min-width: 100%
 }
 
 .about__header--text {
@@ -3748,6 +3753,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     margin-top: 25px;
     max-width: 90%;
     font-size: .875rem;
+    line-height: 150%;
     text-align: left
 }
 
@@ -3793,7 +3799,8 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .about__header--logo {
-        font-size: 9.5px
+        font-size: 9.5px;
+        min-width: 210px
     }
 }
 
