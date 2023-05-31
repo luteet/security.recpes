@@ -11,10 +11,19 @@
 
 	z-index: 3;
 
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	align-items: center;
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		align-items: center;
+
+		padding-top: 10px; padding-bottom: 10px;
+
+		@include _992 {
+			padding-top: 9px; padding-bottom: 10px;
+			min-height: 85px;
+		}
+	}
 
 	&:first-child {
 		border-top: 1px solid transparent;
@@ -23,12 +32,7 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.11);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 
-	padding-top: 10px; padding-bottom: 10px;
-
-	@include _992 {
-		padding-top: 9px; padding-bottom: 10px;
-		min-height: 85px;
-	}
+	
 
 	transition: background .3s ease;
 
