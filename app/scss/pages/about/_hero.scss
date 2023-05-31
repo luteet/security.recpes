@@ -72,8 +72,10 @@
 			margin-top: 28px;
 			text-align: justify;
 			max-width: 309px;
-			display: inline-block;
+			display: inline-flex;
+			flex-direction: column;
 			@include _768 {
+				display: inline-block;
 				text-align: center;
 				max-width: none;
 			}
@@ -81,6 +83,25 @@
 				&.text {
 					font-size: 1.25rem;
 				}	
+			}
+			span {
+				&:first-child::before {
+					@include _768 {
+						display: none;
+					}
+				}
+				&::before {
+					content: '';
+					background: var(--theme-accent);
+					display: none;
+					width: 6px; height: 6px;
+					border-radius: 50%;
+					margin: 0px 10px 3px 0;
+					@include _768 {
+						display: inline-block;
+						margin: 0px 10px 3px 5px;
+					}
+				}
 			}
 		}
 

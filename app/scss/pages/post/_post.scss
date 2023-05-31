@@ -3,7 +3,7 @@
 .post-wrapper {
 	@include _992 {
 		display: grid;
-		grid-template-columns: 64% calc(36% - 20px);
+		grid-template-columns: 64% 36%;
 	}
 
 	padding-bottom: 77px;

@@ -476,17 +476,20 @@
 .header-wrapper .header {
 	border-top: 1px solid rgba(0, 0, 0, 0.11);
 	position: absolute;
+	@media (max-width: 768px) {
+		position: static !important;
+	}
 	left: 0; top: 0;
 
-	&.is-sticky {
+	/* &.is-sticky {
 		background: rgba(255, 255, 255, 0.75);
-	}
+	} */
 }
 
 [data-theme="dark"] .header-wrapper .header {
 	border-top: 1px solid rgba(255, 255, 255, 0.11);
 }
 
-[data-theme="dark"] .header-wrapper .header.is-sticky {
+/* [data-theme="dark"] .header-wrapper .header.is-sticky {
 	background: rgba(16, 20, 36, 0.75);
-}
+} */
