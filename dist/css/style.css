@@ -1263,6 +1263,10 @@ textarea {
     font: inherit
 }
 
+.btn,body,h1,h2,h3,h4,h5,h6 {
+    font-weight: 400
+}
+
 summary {
     display: list-item
 }
@@ -1348,15 +1352,18 @@ summary {
     width: 20px
 }
 
+.splide__sr,.visually-hidden {
+    width: 1px;
+    height: 1px;
+    margin: -1px
+}
+
 .splide__sr {
     clip: rect(0 0 0 0);
     border: 0;
-    height: 1px;
-    margin: -1px;
     overflow: hidden;
     padding: 0;
-    position: absolute;
-    width: 1px
+    position: absolute
 }
 
 .splide__toggle.is-active .splide__toggle__play,.splide__toggle__pause {
@@ -2662,7 +2669,6 @@ img {
 
 h1,h2,h3,h4,h5,h6 {
     font-size: inherit;
-    font-weight: 400;
     margin: 0
 }
 
@@ -2726,7 +2732,6 @@ body,html {
 
 body {
     font-family: var(--main-font);
-    font-weight: 400;
     line-height: 150%;
     display: flex;
     flex-direction: column;
@@ -2835,10 +2840,6 @@ section {
     transition: color .3s ease
 }
 
-.btn,.main-title,.title {
-    font-family: var(--title-font)
-}
-
 .about__image,.main-footer-bg {
     -webkit-user-select: none;
     -ms-user-select: none
@@ -2878,6 +2879,7 @@ section {
     clip-path: polygon(0 0,92% 0,100% 26%,100% 100%,8% 100%,0 78%);
     color: var(--text-color-2);
     border-radius: 0;
+    font-family: var(--title-font);
     font-size: 1.5rem;
     line-height: 116.666667%;
     transition: background .3s ease
@@ -2915,9 +2917,6 @@ section {
 }
 
 .visually-hidden {
-    width: 1px;
-    height: 1px;
-    margin: -1px;
     padding: 0;
     border: 0;
     clip-path: inset(100%);
@@ -2988,6 +2987,10 @@ section {
     transform: scaleX(-1)
 }
 
+.to-up {
+    cursor: pointer
+}
+
 @font-face {
     font-weight:400;font-family:Fairfax;font-display:swap;font-style:normal;src:local("Fairfax"),url(Fairfax.woff) format("woff"),url(Fairfax.woff2) format("woff2")
 }
@@ -3017,6 +3020,7 @@ section {
 }
 
 .main-title {
+    font-family: var(--title-font);
     font-weight: 700;
     line-height: 115%;
     font-size: 1.875rem
@@ -3027,6 +3031,7 @@ section {
 }
 
 .title {
+    font-family: var(--title-font);
     font-weight: 400;
     text-transform: uppercase;
     line-height: 80%;
@@ -3692,7 +3697,7 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .about__header--logo {
-    font-size: 3vw
+    font-size: 2.7vw
 }
 
 .about__header--text {
@@ -3790,7 +3795,7 @@ input:focus::placeholder,textarea:focus::placeholder {
     }
 
     .about__header--logo {
-        font-size: 10px
+        font-size: 9.5px
     }
 }
 

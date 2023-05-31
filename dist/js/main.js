@@ -86,7 +86,7 @@ body.addEventListener('click', function (event) {
 
 
 
-	// =-=-=-=-=-=-=-=-=-=-=-=- <click> -=-=-=-=-=-=-=-=-=-=-=-=
+	// =-=-=-=-=-=-=-=-=-=-=-=- <header-nav-drop-down> -=-=-=-=-=-=-=-=-=-=-=-=
 	
 	const headerNavButton = $(".header__nav--list .drop-down > button")
 	if(headerNavButton) {
@@ -107,7 +107,19 @@ body.addEventListener('click', function (event) {
 		})
 	}
 	
-	// =-=-=-=-=-=-=-=-=-=-=-=- </click> -=-=-=-=-=-=-=-=-=-=-=-=
+	// =-=-=-=-=-=-=-=-=-=-=-=- </header-nav-drop-down> -=-=-=-=-=-=-=-=-=-=-=-=
+
+
+	// =-=-=-=-=-=-=-=-=-=-=-=- <scroll on click to section> -=-=-=-=-=-=-=-=-=-=-=-=
+
+	let btnToScroll = $('.to-up');
+	if(btnToScroll) {
+		event.preventDefault();
+		body.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+	
+	}
+	
+	// =-=-=-=-=-=-=-=-=-=-=-=- </scroll on click to section> -=-=-=-=-=-=-=-=-=-=-=-=
 
 	
 	

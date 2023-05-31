@@ -92,7 +92,8 @@ function scriptsLib() {
 	return src([
 		'node_modules/@splidejs/splide/dist/js/splide.min.js', // Слайдер | npm i @splidejs/splide --save-dev | https://splidejs.com/guides/getting-started/
 		'node_modules/aos/dist/aos.js', // Анимации | npm i aos --save-dev | https://www.npmjs.com/package/aos
-		'node_modules/sticky-js/dist/sticky.min.js' // Sticky | npm i sticky-js --save-dev | https://www.npmjs.com/package/sticky-js
+		'node_modules/sticky-js/dist/sticky.min.js', // Sticky | npm i sticky-js --save-dev | https://www.npmjs.com/package/sticky-js
+		'node_modules/smoothscroll-polyfill/dist/smoothscroll.min.js', // Полифил для window.scroll() | npm i smoothscroll-polyfill --save-dev
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
