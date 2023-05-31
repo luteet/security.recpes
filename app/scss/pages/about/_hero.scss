@@ -58,6 +58,9 @@
 
 		&--logo {
 			font-size: 3vw;
+			@media (min-width: 415px) {
+				font-size: 10px;
+			}
 			@include _768 {
 				font-size: 1.3rem;
 			}

@@ -223,6 +223,12 @@
 	color: var(--accent);
 }
 
+.text-center {
+	@include _768 {
+		text-align: center;
+	}
+}
+
 .txt-center {
 	text-align: center;
 }

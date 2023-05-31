@@ -485,7 +485,7 @@
     color: var(--white);
     background: #753dd3;
     display: inline-block;
-    padding: 5px 8px;
+    padding: 3px 4px;
     border-radius: 5px;
     font-weight: 400;
     line-height: 110%
@@ -1145,12 +1145,16 @@ progress,sub,sup {
     vertical-align: baseline
 }
 
-[type=checkbox],[type=radio],legend {
-    padding: 0
+.splide__list,.splide__slide,[data-aos^=flip][data-aos^=flip] {
+    -webkit-backface-visibility: hidden
 }
 
 .splide,.splide__container,.splide__slide,sub,sup {
     position: relative
+}
+
+.logo,.section-bg,.splide__track--draggable {
+    -webkit-user-select: none
 }
 
 body {
@@ -1238,6 +1242,7 @@ legend {
     color: inherit;
     display: table;
     max-width: 100%;
+    padding: 0;
     white-space: normal
 }
 
@@ -1245,8 +1250,8 @@ textarea {
     overflow: auto
 }
 
-.main,.splide__sr,.splide__track,body._mob-menu-active,body._popup-active {
-    overflow: hidden
+[type=checkbox],[type=radio] {
+    padding: 0
 }
 
 [type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button {
@@ -1276,7 +1281,6 @@ summary {
 }
 
 .splide__list {
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     display: flex;
     height: 100%;
@@ -1322,7 +1326,6 @@ summary {
 }
 
 .splide__slide {
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     flex-shrink: 0;
     list-style-type: none!important;
@@ -1352,17 +1355,15 @@ summary {
     width: 20px
 }
 
-.splide__sr,.visually-hidden {
-    width: 1px;
-    height: 1px;
-    margin: -1px
-}
-
 .splide__sr {
     clip: rect(0 0 0 0);
     border: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
     padding: 0;
-    position: absolute
+    position: absolute;
+    width: 1px
 }
 
 .splide__toggle.is-active .splide__toggle__play,.splide__toggle__pause {
@@ -1374,6 +1375,7 @@ summary {
 }
 
 .splide__track {
+    overflow: hidden;
     position: relative;
     z-index: 0
 }
@@ -1404,13 +1406,8 @@ summary {
 
 .splide__track--draggable {
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none
-}
-
-.logo,.section-bg {
-    -webkit-user-select: none
 }
 
 .splide__track--fade>.splide__list>.splide__slide {
@@ -1533,11 +1530,6 @@ summary {
 .splide__progress__bar {
     background: #ccc;
     height: 3px
-}
-
-.section-bg,body,html {
-    width: 100%;
-    height: 100%
 }
 
 .splide__slide:focus {
@@ -2552,7 +2544,6 @@ summary {
 }
 
 [data-aos^=flip][data-aos^=flip] {
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transition-property: -webkit-transform;
     transition-property: transform;
@@ -2720,6 +2711,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 body,html {
+    height: 100%;
+    width: 100%;
     line-height: 1;
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
@@ -2743,6 +2736,10 @@ body {
     transition: opacity .4s ease,visibility .4s ease
 }
 
+body._mob-menu-active,body._popup-active {
+    overflow: hidden
+}
+
 section {
     position: relative;
     z-index: 2
@@ -2752,6 +2749,8 @@ section {
     position: absolute;
     left: 0;
     top: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     -ms-user-select: none;
     user-select: none;
@@ -2850,6 +2849,7 @@ section {
 }
 
 .main {
+    overflow: hidden;
     flex: 1 0 auto;
     position: relative;
     padding-top: var(--height-header);
@@ -2882,10 +2882,10 @@ section {
 }
 
 .checkbox__input,.visually-hidden {
-    position: absolute;
     white-space: nowrap;
     -webkit-clip-path: inset(100%);
-    overflow: hidden
+    overflow: hidden;
+    position: absolute
 }
 
 .btn:hover {
@@ -2908,7 +2908,14 @@ section {
     background: #9f46db
 }
 
+.checkbox__element,.header__nav,.header__nav--body::before,.input,.textarea {
+    background: var(--text-color-2)
+}
+
 .visually-hidden {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
     padding: 0;
     border: 0;
     clip-path: inset(100%);
@@ -3132,7 +3139,6 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .input,.textarea {
-    background: var(--text-color-2);
     border-radius: 5px;
     padding: 14px 17px;
     border: 1px solid var(--black);
@@ -3201,7 +3207,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--text-color-2);
     border: 1px solid #000;
     border-radius: 5px;
     width: 28px;
@@ -3260,6 +3265,10 @@ input:focus::placeholder,textarea:focus::placeholder {
     flex: 1 1 auto
 }
 
+.header__logo--block {
+    margin-right: 10px
+}
+
 .header__logo--text {
     display: none
 }
@@ -3270,7 +3279,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     top: 0;
     width: 100%;
     height: var(--height-screen,100vh);
-    background: var(--text-color-2);
     overflow-y: auto;
     overflow-x: hidden;
     opacity: 0;
@@ -3301,7 +3309,6 @@ input:focus::placeholder,textarea:focus::placeholder {
     top: 0;
     width: 100%;
     height: var(--height-header);
-    background: var(--text-color-2);
     z-index: 2
 }
 
@@ -3548,11 +3555,15 @@ input:focus::placeholder,textarea:focus::placeholder {
 }
 
 .header-wrapper .header.is-sticky {
-    background: var(--text-color-2)
+    background: rgba(255,255,255,.75)
 }
 
 [data-theme=dark] .header-wrapper .header {
     border-top: 1px solid rgba(255,255,255,.11)
+}
+
+[data-theme=dark] .header-wrapper .header.is-sticky {
+    background: rgba(16,20,36,.75)
 }
 
 .post-card {
@@ -3632,6 +3643,7 @@ input:focus::placeholder,textarea:focus::placeholder {
 .post-card__category {
     display: inline-block;
     padding: 3px 4px;
+    line-height: 110%;
     background: rgba(117,61,211,.49);
     border-radius: 5px;
     margin-right: 12px
@@ -3776,11 +3788,15 @@ input:focus::placeholder,textarea:focus::placeholder {
     .logo {
         font-size: 8px
     }
+
+    .about__header--logo {
+        font-size: 10px
+    }
 }
 
 @media (min-width:550px) {
     .logo {
-        min-width: 320px;
+        min-width: 310px;
         font-size: 10px
     }
 
@@ -3857,6 +3873,10 @@ input:focus::placeholder,textarea:focus::placeholder {
         font-size: 1.5rem;
         margin-top: 26px;
         margin-bottom: -10px
+    }
+
+    .text-center {
+        text-align: center
     }
 
     .post-card._large .post-card__title {

@@ -32,8 +32,6 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.11);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 
-	
-
 	transition: background .3s ease;
 
 	// .header__logo
@@ -47,6 +45,10 @@
 		align-items: center;
 
 		flex: 1 1 auto;
+
+		&--block {
+			margin-right: 10px;
+		}
 
 		&--text {
 			
@@ -478,10 +480,14 @@
 	left: 0; top: 0;
 
 	&.is-sticky {
-		background: var(--text-color-2);
+		background: rgba(255, 255, 255, 0.75);
 	}
 }
 
 [data-theme="dark"] .header-wrapper .header {
 	border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+[data-theme="dark"] .header-wrapper .header.is-sticky {
+	background: rgba(16, 20, 36, 0.75);
 }
