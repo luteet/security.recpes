@@ -1,0 +1,163 @@
+.featured {
+
+	padding-top: 40px; margin-top: 38px;
+	padding-bottom: 39px;
+
+	/* display: grid;
+	gap: 20px; */
+	@include _768 {
+		display: grid;
+		grid-template-columns: 50% calc(50% - 20px);
+	}
+	@include _992 {
+		grid-template-columns: 60% calc(40% - 20px);
+	}
+
+	// .featured__bg
+
+	&__bg {
+
+		background: rgba(117, 61, 211, 0.1);
+
+		// .featured__bg--element
+
+		&--element {
+			position: absolute;
+			right: 0; bottom: 0;
+			transform: translate(50%,50%);
+			opacity: .15;
+		}
+	}
+
+	// .featured__post
+
+	&__post {
+
+		margin-top: 20px;
+		
+		@include _768 {
+			grid-column: 1; grid-row: 1;
+			margin-top: 0;
+		}
+		.post-card__image {
+			min-height: 100%;
+			overflow: hidden;
+			padding-top: min(415px, 100%) !important;
+			
+		}
+	}
+
+	// .featured__slider
+
+	&__slider {
+
+		@include _768 {
+			grid-column: 2; grid-row: 1;
+			margin-left: 20px;
+		}
+
+		
+
+		display: flex;
+		flex-direction: column;
+
+		// .featured__slider--track
+
+		&--track {
+			flex: 1 1 auto;
+		}
+
+		// .featured__slider--list
+
+		&--list {
+		}
+
+		// .featured__slider--slide
+
+		&--slide {
+			min-height: 100%;
+		}
+	}
+
+	// .featured__header
+
+	&__header {
+		margin-bottom: 15px;
+
+		display: flex;
+		align-items: center;
+	}
+
+	// .featured__title
+
+	&__title {
+	}
+
+	// .featured__decor-line
+
+	&__decor-line {
+		flex: 1 1 auto;
+		height: 15px;
+		align-self: center;
+		margin: 0 10px;
+
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0; top: 50%;
+			transform: translate(0,-50%);
+			width: 100%; height: 1px;
+			//background: rgba(255, 255, 255, 0.11);
+			background: var(--theme-color-accent-3);
+		}
+	}
+
+	// .featured__arrows
+
+	&__arrows {
+		display: flex;
+
+		.splide__arrow {
+			position: static;
+			transform: none;
+			border-radius: 5px;
+			background: var(--dark-accent);
+			border: 1px solid var(--dark-accent);
+			opacity: 1;
+			transition: background .2s ease;
+			svg {
+				width: 0.7em; height: 0.7em;
+				fill: var(--white);
+				transition: fill .2s ease;
+			}
+			&[disabled] {
+				background: transparent;
+				svg {
+					fill: var(--text-color);
+				}
+			}
+			&.splide__arrow--next {
+				margin-left: 6px;
+			}
+			&.splide__arrow--prev svg {
+				transform: none;
+			}
+		}
+	}
+
+	// .featured__slide
+
+	&__slide {
+		min-height: 100%;
+		.post-card {
+			min-height: 100%;
+		}
+		.post-card__image {
+			@include _992 {
+				padding-top: 88% !important;
+				min-height: 100%;
+			}
+		}
+	}
+}

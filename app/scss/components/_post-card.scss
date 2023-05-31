@@ -1,0 +1,164 @@
+.post-card {
+
+	display: grid;
+	&._row {
+		
+		@include _550 {
+			grid-template-columns: 77px auto;
+		}
+	}
+
+	&._row & {
+
+		&__image {
+			display: none;
+			@include _550 {
+				display: block;
+			}
+			grid-area: auto;
+			&::after {
+				display: none;
+			}
+		}
+
+		&__info {
+			grid-area: auto;
+			padding: 0;
+			@include _550 {
+				padding: 0 0 0 22px;
+			}
+			align-self: center;
+			&--header {
+				color: var(--text-color);
+				justify-content: space-between;
+			}
+		}
+
+		&__category {
+			color: var(--white);
+			background: #753DD3;
+		}
+
+		&__time {
+			color: var(--text-color);
+		}
+
+		&__title {
+			color: var(--text-color);
+		}
+
+		&__info {
+
+		}
+	}
+
+	&._min & {
+		&__info {
+			padding: 14px;
+		}
+	}
+
+	// .post-card__image
+
+	&__image {
+		width: 100%;
+		grid-area: 1/1;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0; bottom: 0;
+			width: 100%; height: 60%;
+			pointer-events: none;
+			border-radius: 5px;
+			background: linear-gradient(360deg, rgba(28, 13, 55, 0.5152) 0%, rgba(59, 31, 106, 0) 103.67%);
+		}
+
+		img {
+			border-radius: 5px;
+		}
+	}
+
+	// .post-card__info
+
+	&__info {
+
+		grid-area: 1/1;
+		align-self: self-end;
+
+		z-index: 2;
+
+		padding: 22px 26px;
+
+		// .post-card__info--header
+
+		&--header {
+			color: var(--white);
+
+			font-size: 0.75rem;
+			line-height: 125%;
+
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+	}
+
+	// .post-card__category
+
+	&__category {
+		display: inline-block;
+		padding: 5px 4px;
+		background: rgba(117, 61, 211, 0.49);
+		border-radius: 5px;
+		margin-right: 12px;
+	}
+
+	// .post-card__time
+
+	&__time {
+		color: rgba(255, 255, 255, 0.82);
+		font-weight: 500;
+	}
+
+	// .post-card__title
+
+	&__title {
+		margin-top: 5px;
+		max-width: 420px;
+
+		color: var(--white);
+		display: -webkit-box;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		line-clamp: 2;
+		box-orient: vertical;
+		font-weight: 700;
+
+		//transition: color .2s ease;
+	}
+
+	/* &:hover &__title {
+		color: #CCB0F0;
+	}
+	
+	&:active &__title {
+		color: #ba9ae4;
+	} */
+
+	&._large &__title {
+		font-weight: 700;
+		font-size: 1rem;
+		
+		@include _768 {
+			font-size: 1.125rem;
+		}
+		
+		@include _992 {
+			font-size: 1.25rem;
+		}
+		line-height: 170%;
+	}
+}

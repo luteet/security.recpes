@@ -1,0 +1,211 @@
+
+@font-face {
+	@include font-include('Fairfax', 400, swap, normal, 'Fairfax');
+}
+
+@font-face {
+	@include font-include('Fairfax', 700, swap, normal, 'Fairfax-Bold');
+}
+
+@font-face {
+	@include font-include('Gilroy', 300, swap, normal, 'Gilroy-Light');
+}
+
+@font-face {
+	@include font-include('Gilroy', 400, swap, normal, 'Gilroy-Regular');
+}
+
+@font-face {
+	@include font-include('Gilroy', 500, swap, normal, 'Gilroy-Medium');
+}
+
+@font-face {
+	@include font-include('Gilroy', 600, swap, normal, 'Gilroy-Semibold');
+}
+
+@font-face {
+	@include font-include('Gilroy', 700, swap, normal, 'Gilroy-Bold');
+}
+
+.main-title {
+	font-family: var(--title-font);
+	font-weight: 700;
+	line-height: 115%;
+
+	font-size: 1.875rem;
+
+	@include _768 {
+		font-size: 2.5rem;
+	}
+
+	@include _992 {
+		font-size: 3.125rem;
+	}
+}
+
+.title {
+	
+	font-family: var(--title-font);
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 80%;
+	color: var(--theme-color);
+	&._alt {
+		color: var(--theme-color-2);
+	}
+
+	u {
+		text-decoration-color: var(--accent);
+	}
+
+	font-size: 1.5rem;
+	&._min {
+		font-size: 1.5rem;
+	}
+	&._super-min {
+		font-size: 1.5rem;
+	}
+
+	@media (min-width: 355px) {
+		font-size: 1.75rem;
+		&._alt {
+			font-size: 2rem;
+		}
+		&._min {
+			font-size: 2rem;
+		}
+		&._super-min {
+			font-size: 2rem;
+		}
+	}
+
+	@include _768 {
+		font-size: 2.75rem;
+		&._alt {
+			font-size: 3rem;
+		}
+		&._min {
+			font-size: 2rem;
+		}
+		&._super-min {
+			font-size: 2rem;
+		}
+	}
+
+	@include _992 {
+		font-size: 4rem;
+		&._alt {
+			font-size: 3.75rem;
+		}
+		&._min {
+			font-size: 2.5rem;
+		}
+		&._super-min {
+			font-size: 2.25rem;
+		}
+	}
+
+}
+
+.min-title {
+	font-family: var(--main-font);
+	font-size: 1rem; // 16px
+	font-weight: 600;
+	@include _550 {
+		font-size: 1.25rem; // 20px
+	}
+	
+	@include _768 {
+		font-weight: 700;
+		font-size: 1.5rem; // 24px
+	}
+	
+	@include _992 {
+		font-size: 2rem; // 32px
+	}
+	line-height: 100%;
+	color: var(--text-color);
+}
+
+.text {
+
+	font-size: 1rem;
+	&._large {
+		font-size: 1.125rem;
+	}
+
+	h2, h3 {
+		font-weight: 600;
+		line-height: 100%;
+		font-size: 1.125rem;
+
+		color: var(--text-color);
+
+		margin-top: 35px; margin-bottom: -10px;
+	}
+
+	@media (min-width: 355px) {
+		font-size: 1.125rem;
+		&._large {
+			font-size: 1.25rem;
+		}
+	}
+
+	p:not(:first-child) {
+		padding-top: 22px;
+	}
+
+	&._min {
+		font-size: 0.875rem;
+		p:not(:first-child) {
+			padding-top: 10px;
+		}
+	}
+
+	@include _768 {
+		&._min {
+			font-size: 1rem;
+		}
+
+		h2, h3 {
+			font-size: 1.5rem;
+			margin-top: 26px; margin-bottom: -10px;
+		}
+	}
+	
+	@include _992 {
+		font-size: 1.5rem; // 24px
+		&._min {
+			font-size: 1.125rem;
+			p:not(:first-child) {
+				padding-top: 10px;
+			}
+		}
+		p:not(:first-child) {
+			padding-top: 32px;
+		}
+
+		h2, h3 {
+			font-size: 2rem;
+			margin-top: 36px; margin-bottom: -10px;
+		}
+	}
+	line-height: 162.48%;
+
+	color: var(--text-color);
+
+}
+
+.required {
+	&::after {
+		content: '*';
+	}
+}
+
+[data-theme="dark"] .required::after {
+	color: var(--accent);
+}
+
+.txt-center {
+	text-align: center;
+}

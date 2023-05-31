@@ -1,0 +1,335 @@
+@use 'sass:math';
+
+:root {
+	--title-font: 'Fairfax', monospace, -webkit-pictograph;
+	--main-font: 'Gilroy', sans-serif;
+	
+	--accent: #9800FF;
+	--accent-hover: #a825ff;
+	--accent-active: #8400db;
+	--accent-2: #C366EE;
+	--accent-2-active: #ac54d4;
+	--dark-accent: #41287A;
+
+	--text-color: #101017;
+	--text-color-2: #fff;
+	--theme-color: #261C3F;
+	--theme-color-2: #261C3F;
+	--theme-color-3: rgba(255, 255, 255, 0.51);
+	--theme-color-accent: var(--accent);
+	--theme-color-accent-2: #CCB0F0;
+	--theme-color-accent-3: #D4C3F1;
+	--theme-color-accent-4: #9800FF;
+
+	--white: #FFF;
+	--black: #000;
+
+	--container-padding: 15px;
+	--negative-container-padding: -15px;
+}
+
+[data-theme="dark"]:root {
+	--text-color: #fff;
+	--theme-color: #fff;
+	--text-color-2: #101017;
+	--theme-color-2: #9800FF;
+	--theme-color-accent: #FFF;
+	--theme-color-accent-2: rgba(255, 255, 255, 0.11);
+	--theme-color-accent-3: rgba(255, 255, 255, 0.11);
+	--theme-color-accent-4: #B253F2;
+	--theme-color-3: rgba(117, 61, 211, 0.2);
+}
+
+[data-theme="dark"] body {
+	background: #101424;
+}
+
+[data-theme="dark"] .header {
+	border-color: rgba(255,255,255,0.11);
+}
+
+html, body {
+	font-size: 16px;
+	min-height: 100%;
+	min-width: 320px;
+}
+
+body {
+	font-family: var(--main-font);
+	
+	font-weight: 400;
+	line-height: 150%;
+
+	display: flex;
+	flex-direction: column;
+
+	color: var(--text-color);
+
+	transition: background .4s ease;
+
+	//padding-right: var(--popup-padding);
+
+	&._mob-menu-active {
+		overflow: hidden;
+	}
+
+	&._popup-active {
+		overflow: hidden;
+	}
+	
+}
+
+section {
+	position: relative;
+	z-index: 2;
+}
+
+.section-bg {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	z-index: -1;
+
+	user-select: none; pointer-events: none;
+}
+
+.decor-element {
+	position: absolute;
+	width: 1000px; height: 1000px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(116,7,255,1) 0%, rgba(255,255,255,0) 57%);
+	filter: blur(15px);
+}
+
+.decor-image-element {
+	position: absolute;
+	width: 1500px; height: 650px;
+	img {
+		position: absolute;
+		left: 0; top: 0;
+		width: 100%; height: 100%;
+		object-fit: contain;
+		transform: scale(1.5);
+	}
+}
+
+[data-theme="dark"] {
+	.theme-light-element {
+		opacity: 0; visibility: hidden;
+	}
+	
+	.theme-dark-element {
+		opacity: 1; visibility: visible;
+	}
+
+	.categories__list li a {
+		border-color: #41287A;
+		&:hover {
+			background: rgba(117, 61, 211, 0.79);
+			border-color: rgba(117, 61, 211, 0.79);
+			b {
+				background: #101424;
+			}
+		}
+
+		&:active {
+			background: rgba(117, 61, 211, 0.6);
+			border-color: rgba(117, 61, 211, 0.6);
+		}
+	}
+}
+
+[data-theme="dark"] .header__theme--btn, [data-theme="dark"] .header__burger {
+	border-color: transparent;
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-light-element {
+	transition: opacity .4s ease, visibility .4s ease;
+	opacity: 1; visibility: visible;
+}
+
+.theme-dark-element {
+	transition: opacity .4s ease, visibility .4s ease;
+	opacity: 0; visibility: hidden;
+}
+
+.logo {
+	font-size: 6px;
+
+	@media (min-width: 415px) {
+		font-size: 8px;
+	}
+    font-family: monospace,-webkit-pictograph;
+    line-height: 1;
+    min-width: 210px;
+	@include _550 {
+		min-width: 310px;
+		font-size: 10px;
+	}
+	//letter-spacing: -0.0625rem;
+	user-select: none;
+	color: var(--theme-color);
+	-webkit-text-stroke-width: 0.5px;
+	transition: color .3s ease;
+}
+
+.wrapper {
+	flex: 1 1 auto;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.main {
+	overflow: hidden;
+
+	flex: 1 0 auto;
+	position: relative;
+	padding-top: var(--height-header); margin-top: calc(0px - var(--height-header));
+}
+
+.container {
+	padding-left: var(--container-padding);
+	padding-right: var(--container-padding);
+	
+	@media (min-width: #{$container}px) {
+		padding-left: max(var(--container-padding), calc(50% - #{math.div($container, 2)}px));
+		padding-right: max(var(--container-padding), calc(50% - #{math.div($container, 2)}px));
+	}
+}
+
+.section-padding {
+	padding-top: 75px; padding-bottom: 75px;
+
+	@include _768 {
+		padding-top: 100px; padding-bottom: 100px;
+	}
+
+	@include _992 {
+		padding-top: 150px; padding-bottom: 150px;
+	}
+
+}
+
+.btn {
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	
+	padding: 10px 27px 8px 27px;
+
+	background: var(--accent);
+	clip-path: polygon(0 0, 92% 0, 100% 26%, 100% 100%, 8% 100%, 0 78%);
+	color: var(--text-color-2);
+
+	border-radius: 0;
+
+	font-family: var(--title-font);
+	font-size: 1.5rem;
+	line-height: 116.666667%;
+
+	transition: background .3s ease;
+
+	&:hover {
+		background: var(--accent-hover);
+	}
+	
+	&:active {
+		background: var(--accent-active);
+	}
+
+	&._alt {
+		background: #B253F2;
+		&:hover {
+			background: #bb62f7;
+		}
+		
+		&:active {
+			background: #9f46db;
+		}
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px; height: 1px;
+	margin: -1px; padding: 0;
+	border: 0;
+	
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.hide-on-tablet {
+	@media (max-width: 991px) {
+		display: none;
+	}
+}
+
+.breadcrumbs {
+	
+	padding-top: 27px; padding-bottom: 27px;
+	line-height: 120%;
+
+	&__separator {
+		margin-right: 5px; margin-left: 2px;
+		color: var(--text-color);
+	}
+
+	a {
+		color: var(--text-color);
+		transition: color .15s ease;
+		pointer-events: none;
+
+		font-size: 0.75rem;
+		
+		
+		@include _768 {
+			font-size: 0.875rem;
+		}
+		
+		@include _992 {
+			font-size: 1rem;
+		}
+	}
+
+	a:not(:last-child) {
+		pointer-events: all;
+		text-decoration: underline;
+		&:hover {
+			color: var(--accent);
+		}
+		
+		&:active {
+			color: var(--accent-active);
+		}
+	}
+}
+
+.main-footer-bg {
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	z-index: -1;
+	user-select: none; pointer-events: none;
+
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+
+	&__decor {
+		display: grid;
+		> * {
+			grid-area: 1/1;
+		}
+		img {
+			width: 150px; height: auto;
+		}
+		&:last-child {
+			transform: scaleX(-1);
+		}
+	}
+}

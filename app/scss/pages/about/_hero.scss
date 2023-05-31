@@ -1,0 +1,155 @@
+@use 'sass:math';
+
+.about {
+
+	padding-top: 53px; padding-bottom: 45px;
+
+	@include _992 {
+		padding-top: 93px; padding-bottom: 93px;
+	}
+
+	&__bg {
+		&--decor {
+			&:nth-child(1) {
+				
+				display: none;
+				@include _992 {
+					display: block;
+					right: max(1px, calc(50% - #{math.div(($container + 700), 2)}px));
+					transform: translate(0,-15%);
+					opacity: .15;
+				}
+			}
+
+			&:nth-child(2) {
+				left: 55%;
+				transform: translate(-50%,-20%) rotate(45deg);
+				width: 1400px; height: 750px;
+				opacity: .4;
+				@include _992 {
+					width: 1500px; height: 650px;
+					left: max(1px, calc(50% - #{math.div($container, 2)}px));
+					transform: translate(-50%,0) rotate(45deg);
+					opacity: .32;
+				}
+			}
+		}
+	}
+
+	&__wrapper {
+		@include _992 {
+			display: grid;
+			grid-template-columns: 46% 10% 44%;
+		}
+	}
+
+	// .about__header
+
+	&__header {
+		text-align: center;
+		position: relative;
+		z-index: 2;
+
+		@include _992 {
+			grid-column: 3 span;
+		}
+
+		// .about__header--logo
+
+		&--logo {
+			font-size: 3vw;
+			@include _768 {
+				font-size: 1.3rem;
+			}
+		}
+
+		// .about__header--text
+
+		&--text {
+			margin-top: 28px;
+		}
+
+		// .about__header--footer
+
+		&--footer {
+			margin-top: 37px;
+		}
+
+		// .about__header--btn
+
+		&--btn {
+		}
+	}
+
+	// .about__image
+
+	&__image {
+
+		@include _992 {
+			grid-column: 2/4; grid-row: 2;
+			align-self: center;
+		}
+
+		display: grid;
+		user-select: none;
+
+		// .about__image--item
+
+		&--item {
+			grid-area: 1/1;
+			transform: scale(1.2);
+		}
+	}
+
+	// .about__content
+
+	&__content {
+		@include _992 {
+			grid-column: 1/3; grid-row: 2;
+			align-self: center;
+			position: relative;
+			z-index: 2;
+		}
+	}
+
+	// .about__min-title
+
+	&__min-title {
+	}
+
+	// .about__title
+
+	&__title {
+		margin-top: 15px;
+		
+	}
+
+	// .about__list
+
+	&__list {
+		margin-top: 25px;
+		max-width: 90%;
+
+		font-size: 0.875rem;
+		line-height: 150%;
+
+		@include _768 {
+			font-size: 1rem;
+		}
+
+		li:not(:first-child) {
+			margin-top: 15px;
+		}
+
+		li {
+			display: flex;
+			color: var(--text-color);
+			&::before {
+				content: '';
+				width: 9px; height: 9px; flex: 0 0 9px;
+				margin-right: 19px; margin-top: 8px;
+				background: var(--accent);
+			}
+		}
+	}
+}
