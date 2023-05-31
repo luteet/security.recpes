@@ -51,11 +51,14 @@
 	line-height: 80%;
 	color: var(--theme-color);
 	&._alt {
-		color: var(--theme-color-2);
+		color: var(--theme-accent);
 	}
 
 	u {
-		text-decoration-color: var(--accent);
+		text-decoration-color: var(--theme-accent);
+		text-underline-offset: -0.1rem;
+		text-decoration-thickness: 0.4375rem;
+		text-decoration-skip-ink: none;
 	}
 
 	font-size: 1.5rem;
@@ -146,6 +149,9 @@
 
 	@media (min-width: 355px) {
 		font-size: 1.125rem;
+		&._alt {
+			font-size: 1.125rem; // 18px
+		}
 		&._large {
 			font-size: 1.25rem;
 		}
@@ -162,9 +168,17 @@
 		}
 	}
 
+	&._alt {
+		font-size: 1rem; // 18px
+	}
+
 	@include _768 {
 		&._min {
 			font-size: 1rem;
+		}
+
+		&._alt {
+			font-size: 1.125rem; // 18px
 		}
 
 		h2, h3 {
@@ -175,6 +189,9 @@
 	
 	@include _992 {
 		font-size: 1.5rem; // 24px
+		&._alt {
+			font-size: 1.375rem; // 22px
+		}
 		&._min {
 			font-size: 1.125rem;
 			p:not(:first-child) {

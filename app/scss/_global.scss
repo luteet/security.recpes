@@ -13,9 +13,11 @@
 
 	--text-color: #101017;
 	--text-color-2: #fff;
+	--theme-accent: #9800FF;
 	--theme-color: #261C3F;
 	--theme-color-2: #261C3F;
 	--theme-color-3: rgba(255, 255, 255, 0.51);
+	--theme-color-4: #261C3F;
 	--theme-color-accent: var(--accent);
 	--theme-color-accent-2: #CCB0F0;
 	--theme-color-accent-3: #D4C3F1;
@@ -38,6 +40,8 @@
 	--theme-color-accent-3: rgba(255, 255, 255, 0.11);
 	--theme-color-accent-4: #B253F2;
 	--theme-color-3: rgba(117, 61, 211, 0.2);
+	--theme-color-4: #C366EE;
+	--theme-accent: #B253F2;
 }
 
 [data-theme="dark"] body {
@@ -164,7 +168,7 @@ section {
     line-height: 1;
     min-width: 210px;
 	@include _550 {
-		min-width: 310px;
+		min-width: 320px;
 		font-size: 10px;
 	}
 	//letter-spacing: -0.0625rem;
@@ -219,7 +223,7 @@ section {
 	
 	padding: 10px 27px 8px 27px;
 
-	background: var(--accent);
+	background: var(--theme-accent);
 	clip-path: polygon(0 0, 92% 0, 100% 26%, 100% 100%, 8% 100%, 0 78%);
 	color: var(--text-color-2);
 

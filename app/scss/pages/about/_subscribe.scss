@@ -45,7 +45,7 @@
 
 			&:nth-child(2) {
 				left: 50%; top: 0;
-				transform: translate(-50%,-10%);
+				transform: translate(-50%,-30%);
 				opacity: .15;
 				@include _550 {
 					opacity: .2;
@@ -92,10 +92,15 @@
 		}
 
 		li::before {
-			content: '●';
-			color: var(--accent);
-			font-size: 1.125rem;
-			margin: 0 5px 0 6px;
+			align-self: center;
+			content: '';
+			background: var(--theme-accent);
+			width: 6px; height: 6px;
+			border-radius: 50%;
+			margin: 3px 10px 0 0;
+			@include _768 {
+				margin: 3px 10px 0 9px;
+			}
 		}
 	}
 
@@ -106,6 +111,10 @@
 		@include _768 {
 			margin-top: 30px;
 		}
+
+		max-width: 890px;
+		margin-left: auto; margin-right: auto;
+		text-align: justify;
 	}
 
 	// .subscribe__form

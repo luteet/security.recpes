@@ -97,13 +97,11 @@ body.addEventListener('click', function (event) {
 			})	
 		}
 
-		if(getDeviceType() != 'desktop') {
-			headerNavButton.classList.toggle('active');
-		}
+		headerNavButton.classList.toggle('active');
 
 		
 	
-	} else if(getDeviceType() != 'desktop' && !$(".header__nav--list .drop-down")) {
+	} else if(!$(".header__nav--list .drop-down")) {
 		document.querySelectorAll('.header__nav--list .drop-down > button.active').forEach(element => {
 			element.classList.remove('active')
 		})
@@ -123,10 +121,12 @@ body.addEventListener('click', function (event) {
 // =-=-=-=-=-=-=-=-=-=-=-=- <resize> -=-=-=-=-=-=-=-=-=-=-=-=
 
 let windowSize = 0;
+const headerWrapper = document.querySelector('.header-wrapper');
 
 function resize() {
 
 	html.style.setProperty("--height-header", header.offsetHeight + "px");
+	if(headerWrapper) headerWrapper.style.setProperty('--height', header.offsetHeight + "px");
 	if(windowSize != window.innerWidth) {
 		html.style.setProperty("--svh", window.innerHeight * 0.01 + "px");
 	}
@@ -171,11 +171,16 @@ new LazyLoad();
 // =-=-=-=-=-=-=-=-=-=-=-=- <animation> -=-=-=-=-=-=-=-=-=-=-=-=
 
 document.addEventListener('DOMContentLoaded', function() {
-	AOS.init({
-		disable: "mobile",
-		once: true,
-	});
+	setTimeout(() => {
+		AOS.init({
+			disable: "mobile",
+			once: true,
+		});
+	},0)
 })
 
 // =-=-=-=-=-=-=-=-=-=-=-=- </animation> -=-=-=-=-=-=-=-=-=-=-=-=
+
+
+new Sticky('.sticky');
 
