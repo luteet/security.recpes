@@ -45,6 +45,21 @@ imageBody.forEach(imageBody => {
 // =-=-=-=-=-=-=-=-=-=- </image-aspect-ratio> -=-=-=-=-=-=-=-=-=-=-
 
 
+// =-=-=-=-=-=-=-=-=-=-=-=- <get-coords> -=-=-=-=-=-=-=-=-=-=-=-=
+
+function getCoords(elem) {
+	let box = elem.getBoundingClientRect();
+
+	return {
+	top: box.top + window.pageYOffset,
+	right: box.right + window.pageXOffset,
+	bottom: box.bottom + window.pageYOffset,
+	left: box.left + window.pageXOffset
+	};
+}
+
+// =-=-=-=-=-=-=-=-=-=-=-=- </get-coords> -=-=-=-=-=-=-=-=-=-=-=-=
+
 
 // =-=-=-=-=-=-=-=-=-=- <click events> -=-=-=-=-=-=-=-=-=-=-
 
@@ -112,10 +127,38 @@ body.addEventListener('click', function (event) {
 
 	// =-=-=-=-=-=-=-=-=-=-=-=- <scroll on click to section> -=-=-=-=-=-=-=-=-=-=-=-=
 
-	let btnToScroll = $('.to-up');
-	if(btnToScroll) {
+	let toUp = $('.to-up');
+	if(toUp) {
 		event.preventDefault();
 		body.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+	
+	}
+	
+	// =-=-=-=-=-=-=-=-=-=-=-=- </scroll on click to section> -=-=-=-=-=-=-=-=-=-=-=-=
+
+
+	// =-=-=-=-=-=-=-=-=-=-=-=- <scroll on click to section> -=-=-=-=-=-=-=-=-=-=-=-=
+	let btnToScroll = $('.btn-to-scroll');
+	if(btnToScroll) {
+		event.preventDefault();
+		let section;
+	
+		section = document.querySelector(btnToScroll.getAttribute('href'))
+	
+		menu.forEach(elem => {
+			elem.classList.remove('_mob-menu-active')
+		})
+	
+		if(section) {
+			section.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+			window.scrollTo({
+				left: 0,
+				top: getCoords(section).top,
+				behavior: 'smooth',
+			})
+		} else {
+			body.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+		}
 	
 	}
 	
