@@ -44,6 +44,20 @@ imageBody.forEach(imageBody => {
 
 // =-=-=-=-=-=-=-=-=-=- </image-aspect-ratio> -=-=-=-=-=-=-=-=-=-=-
 
+document.addEventListener('keydown', function(event) {
+	if (event.shiftKey && event.key === 'C') {
+		const theme = (localStorage.getItem('security-recipes-theme')) ? localStorage.getItem('security-recipes-theme') : 'light';
+		if(theme == 'light') {
+			html.dataset.theme = 'dark';
+			localStorage.setItem('security-recipes-theme', 'dark');
+		} else {
+			html.dataset.theme = 'light';
+			localStorage.setItem('security-recipes-theme', 'light');
+		}
+	}
+  });
+
+
 
 // =-=-=-=-=-=-=-=-=-=-=-=- <get-coords> -=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -90,9 +104,11 @@ body.addEventListener('click', function (event) {
 		if(theme == 'light') {
 			html.dataset.theme = 'dark';
 			localStorage.setItem('security-recipes-theme', 'dark');
+			if(document.querySelector('.code-snippet-light')) document.querySelector('.code-snippet-light').remove();
 		} else {
 			html.dataset.theme = 'light';
 			localStorage.setItem('security-recipes-theme', 'light');
+			body.insertAdjacentHTML('beforeend', `<style class="code-snippet-light">/* https://github.com/lonekorean/gist-syntax-themes */@import url('https://cdn.rawgit.com/lonekorean/gist-syntax-themes/d49b91b3/stylesheets/solarized-light.css');@import url('https://fonts.googleapis.com/css?family=Open+Sans');body .gist .highlight {  background: #101424;}body .gist .gist-file {  border-color: #ddd}body .gist .gist-data {  border-color: #ddd;	border-width: 1px;}body .gist .gist-meta {  color: #666;  background: #f7f7f7; }body .gist .gist-meta a {  color: #ffffff}body .gist .gist-data .pl-s .pl-s1 {  color: #a5c261}body .gist .blob-num:hover{color:#1F2328}</style>`)
 		}
 	
 	}
@@ -231,11 +247,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			disable: "mobile",
 			once: true,
 		});
-	},0)
+	},500)
 })
 
 // =-=-=-=-=-=-=-=-=-=-=-=- </animation> -=-=-=-=-=-=-=-=-=-=-=-=
 
+
+if(localStorage.getItem('security-recipes-theme') == 'light' || !localStorage.getItem('security-recipes-theme')) {
+	body.insertAdjacentHTML('beforeend', `<style class="code-snippet-light">/* https://github.com/lonekorean/gist-syntax-themes */@import url('https://cdn.rawgit.com/lonekorean/gist-syntax-themes/d49b91b3/stylesheets/solarized-light.css');@import url('https://fonts.googleapis.com/css?family=Open+Sans');body .gist .highlight {  background: #101424;}body .gist .gist-file {  border-color: #ddd}body .gist .gist-data {  border-color: #ddd;	border-width: 1px;}body .gist .gist-meta {  color: #666;  background: #f7f7f7; }body .gist .gist-meta a {  color: #ffffff}body .gist .gist-data .pl-s .pl-s1 {  color: #a5c261}body .gist .blob-num:hover{color:#1F2328}</style>`)
+}
 
 new Sticky('.sticky');
 
