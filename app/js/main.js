@@ -104,11 +104,38 @@ body.addEventListener('click', function (event) {
 		if(theme == 'light') {
 			html.dataset.theme = 'dark';
 			localStorage.setItem('security-recipes-theme', 'dark');
-			if(document.querySelector('.code-snippet-light')) document.querySelector('.code-snippet-light').remove();
+			body.insertAdjacentHTML('beforeend', `<style class="dark-theme-snippet">
+/* https://github.com/lonekorean/gist-syntax-themes */
+@import url('https://cdn.rawgit.com/lonekorean/gist-syntax-themes/d49b91b3/stylesheets/one-dark.css');
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body .gist .highlight {
+  background: #101424;
+}
+body .gist .gist-file {
+  border-color: rgba(255, 255, 255, 0.11)
+}
+body .gist .gist-data {
+  border-color: rgb(16, 20, 36);
+	border-width: 1px;
+}
+body .gist .gist-meta {
+  color: #ffffff;
+  background: rgba(117,61,211,.2); 
+}
+body .gist .gist-meta a {
+  color: #ffffff
+}
+body .gist .gist-data .pl-s .pl-s1 {
+  color: #a5c261
+}
+body .gist .blob-num:hover{color:#ffffff}
+</style>`)
+			
 		} else {
 			html.dataset.theme = 'light';
 			localStorage.setItem('security-recipes-theme', 'light');
-			body.insertAdjacentHTML('beforeend', `<style class="code-snippet-light">/* https://github.com/lonekorean/gist-syntax-themes */@import url('https://cdn.rawgit.com/lonekorean/gist-syntax-themes/d49b91b3/stylesheets/solarized-light.css');@import url('https://fonts.googleapis.com/css?family=Open+Sans');body .gist .highlight {  background: #101424;}body .gist .gist-file {  border-color: #ddd}body .gist .gist-data {  border-color: #ddd;	border-width: 1px;}body .gist .gist-meta {  color: #666;  background: #f7f7f7; }body .gist .gist-meta a {  color: #ffffff}body .gist .gist-data .pl-s .pl-s1 {  color: #a5c261}body .gist .blob-num:hover{color:#1F2328}</style>`)
+			if(document.querySelector('.dark-theme-snippet')) document.querySelector('.dark-theme-snippet').remove();
 		}
 	
 	}
@@ -253,8 +280,34 @@ document.addEventListener('DOMContentLoaded', function() {
 // =-=-=-=-=-=-=-=-=-=-=-=- </animation> -=-=-=-=-=-=-=-=-=-=-=-=
 
 
-if(localStorage.getItem('security-recipes-theme') == 'light' || !localStorage.getItem('security-recipes-theme')) {
-	body.insertAdjacentHTML('beforeend', `<style class="code-snippet-light">/* https://github.com/lonekorean/gist-syntax-themes */@import url('https://cdn.rawgit.com/lonekorean/gist-syntax-themes/d49b91b3/stylesheets/solarized-light.css');@import url('https://fonts.googleapis.com/css?family=Open+Sans');body .gist .highlight {  background: #101424;}body .gist .gist-file {  border-color: #ddd}body .gist .gist-data {  border-color: #ddd;	border-width: 1px;}body .gist .gist-meta {  color: #666;  background: #f7f7f7; }body .gist .gist-meta a {  color: #ffffff}body .gist .gist-data .pl-s .pl-s1 {  color: #a5c261}body .gist .blob-num:hover{color:#1F2328}</style>`)
+if(localStorage.getItem('security-recipes-theme') == 'dark') {
+	body.insertAdjacentHTML('beforeend', `<style class="dark-theme-snippet">
+	/* https://github.com/lonekorean/gist-syntax-themes */
+	@import url('https://cdn.rawgit.com/lonekorean/gist-syntax-themes/d49b91b3/stylesheets/one-dark.css');
+	
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+	body .gist .highlight {
+	  background: #101424;
+	}
+	body .gist .gist-file {
+	  border-color: rgba(255, 255, 255, 0.11)
+	}
+	body .gist .gist-data {
+	  border-color: rgb(16, 20, 36);
+		border-width: 1px;
+	}
+	body .gist .gist-meta {
+	  color: #ffffff;
+	  background: rgba(117,61,211,.2); 
+	}
+	body .gist .gist-meta a {
+	  color: #ffffff
+	}
+	body .gist .gist-data .pl-s .pl-s1 {
+	  color: #a5c261
+	}
+	body .gist .blob-num:hover{color:#ffffff}
+	</style>`)
 }
 
 new Sticky('.sticky');
